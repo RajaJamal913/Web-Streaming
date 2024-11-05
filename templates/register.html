@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Sign Up</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            font-family: Arial, sans-serif;
+            color: #444;
+            margin: 0;
+        }
+        .card {
+            max-width: 380px; /* Reduced width */
+            width: 100%;
+            padding: 2rem;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: #fff;
+            text-align: center;
+        }
+        .card h2 {
+            color: #333;
+            font-weight: 700;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+        .form-control {
+            border-radius: 30px;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: none;
+        }
+        .btn-primary {
+            border-radius: 30px;
+            padding: 0.75rem 1.5rem;
+            background: #6a11cb;
+            border: none;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #2575fc;
+        }
+        .alternative-link {
+            color: #6a11cb;
+            font-weight: 500;
+        }
+        .alternative-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2>Register</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-group mt-4">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+            <div class="form-group mt-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-group mt-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group mt-3">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <div class="form-group mt-3">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name="confirm_password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-4">Sign Up</button>
+        </form>
+        <p class="text-center mt-4">Already have an account? <a href="{% url 'login' %}" class="alternative-link">Log In</a></p>
+    </div>
+</div>
+</body>
+</html>
